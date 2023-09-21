@@ -1,0 +1,32 @@
+.property-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  height: 183px;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 16px;
+  box-shadow: rgba(29, 71, 123, 0.04) 0px 5px 10px, rgba(29, 71, 123, 0.12) 0px 1px 5px;
+  box-sizing: border-box;
+
+  &__image-cotainer {
+    width: 277px;
+    height: 100%;
+  }
+
+  &__info {
+    padding: 20px 22px 15px 32px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .units {
+     color: #6e6e6e;
+     font-size: 14px;
+     line-height: 24px;
+
+    &__item {
+      margin-right: 4px;
+    }
+  }
+}

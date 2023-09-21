@@ -1,0 +1,37 @@
+$primaryColor: #1c85e8;
+
+.search-wrapper,
+.search-placeholder {
+  display: flex;
+  align-items: center;
+}
+
+.search-placeholder {
+  .search-icon {
+    margin-right: 8px;
+  }
+
+  .search-title {
+    cursor: pointer;
+    font-family: Inter, serif;
+    font-weight: normal;
+    text-transform: none;
+    color: #6e6e6e;
+    transition: color .15s cubic-bezier(0.1, 0.7, 0.1, 1);
+  }
+
+  &:hover {
+    svg.search-icon {
+      circle {
+        stroke: $primaryColor !important;
+      }
+      path {
+        fill: $primaryColor !important;
+      }
+    }
+
+    .search-title {
+      color: $primaryColor
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { skipToken } from '@reduxjs/toolkit/query';
 import { Header, Map, Filters, PropertyList } from '../components';
 import { useGetAllListingsQuery, useGetListingsByAddressQuery } from '../api';
 import './home.scss';
@@ -11,9 +12,9 @@ export const HomesPage = () => {
   const searchTerm = queryParams.get('search');
   const filterTerm = queryParams.get('filter');
 
-  const { data: properties, isLoading } = searchTerm ?
-    useGetListingsByAddressQuery({ address: searchTerm }) :
-    useGetAllListingsQuery({});
+  const allListings = useGetAllListingsQuery(searchTerm ? skipToken : {});
+  const listingsByAddress = useGetListingsByAddressQuery(searchTerm ? { address: searchTerm } : skipToken);
+  const { data: properties, isLoading } = searchTerm ? listingsByAddress : allListings;
 
   const [filteredProperties, setFilteredProperties] = useState(properties || []);
 

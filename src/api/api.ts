@@ -9,7 +9,7 @@ export const api = createApi({
   }),
   endpoints: (builder) => ({
     getAllListings: builder.query({
-      query: ({ }) => ({
+      query: () => ({
         url: `/test-get-listings`,
         method: 'GET',
       }),

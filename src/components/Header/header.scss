@@ -1,8 +1,14 @@
 .header {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 10px 22px;
   height: 78px;
   box-shadow: 0 1px 4px rgba(68,89,109,.15);
+
+  &__logo {
+    left: 22px;
+    position: absolute;
+  }
 }

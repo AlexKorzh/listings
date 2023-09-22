@@ -1,0 +1,28 @@
+.homes-content {
+  display: flex;
+  height: calc(100vh - 78px);
+}
+
+.right-panel {
+  padding: 22px 32px;
+  width: 50%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  .filters {
+    margin-bottom: 22px;
+    .title {
+      font-family: "Graphik-Semibold", serif;
+      font-size: 1rem;
+      line-height: 1.15;
+      margin: 0 0 4px;
+    }
+    .listing-count {
+      font-size: .875rem;
+      line-height: 1.5rem;
+      height: 1.5rem;
+      margin-bottom: 2rem;
+    }
+  }
+}

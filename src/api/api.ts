@@ -7,7 +7,6 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: baseUrl,
   }),
-  // tagTypes: ['Versions', 'Users'],
   endpoints: (builder) => ({
     getAllListings: builder.query({
       query: ({ }) => ({
@@ -15,9 +14,15 @@ export const api = createApi({
         method: 'GET',
       }),
       transformResponse: (response: any) => response.results,
-      // providesTags: ['Versions'],
+    }),
+    getListingsByAddress: builder.query({
+      query: ({ address }) => ({
+        url: `/test-get-listings?query=${address}`,
+        method: 'GET',
+      }),
+      transformResponse: (response: any) => response.results,
     }),
   }),
 });
 
-export const { useGetAllListingsQuery } = api;
+export const { useGetAllListingsQuery, useGetListingsByAddressQuery } = api;

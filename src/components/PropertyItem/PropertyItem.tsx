@@ -8,21 +8,14 @@ interface PropertyItemProps {
   property: IProperty
 }
 
-// font-family: Graphik-Semibold;
-// font-weight: 600;
-// display: inline;
-// font-size: 16px;
-// line-height: 26px;
-// color: #222;
-// margin: 0;
-// margin-right: 10px;
-
 export const PropertyItem = ({ property }: PropertyItemProps) => {
+  const imageUrl = property.images[0];
+
   return (
     <div className='property-item'>
-      <ImageContainer/>
+      <ImageContainer imageUrl={imageUrl}/>
       <PropertyInfo
-        price={123}
+        price={property.purchasePrice}
         units={property.units}
         address={property.address}
       />

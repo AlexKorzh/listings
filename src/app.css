@@ -1,6 +1,4 @@
 /* Basic CSS Reset */
-@import url(https://db.onlinewebfonts.com/c/105007d99d9df64c50cc24d696d79555?family=Graphik+Web+Regular+Regular);
-
 @font-face {
   font-family: "Graphik-Regular";
   src: url("https://db.onlinewebfonts.com/t/105007d99d9df64c50cc24d696d79555.eot");
@@ -9,6 +7,15 @@
   url("https://db.onlinewebfonts.com/t/105007d99d9df64c50cc24d696d79555.woff")format("woff"),
   url("https://db.onlinewebfonts.com/t/105007d99d9df64c50cc24d696d79555.ttf")format("truetype"),
   url("https://db.onlinewebfonts.com/t/105007d99d9df64c50cc24d696d79555.svg#Graphik Web Regular Regular")format("svg");
+}
+@font-face {
+  font-family: "Graphik-Semibold";
+  src: url("https://db.onlinewebfonts.com/t/2aa5f6db10ab7b69465c95555c235503.eot");
+  src: url("https://db.onlinewebfonts.com/t/2aa5f6db10ab7b69465c95555c235503.eot?#iefix")format("embedded-opentype"),
+  url("https://db.onlinewebfonts.com/t/2aa5f6db10ab7b69465c95555c235503.woff2")format("woff2"),
+  url("https://db.onlinewebfonts.com/t/2aa5f6db10ab7b69465c95555c235503.woff")format("woff"),
+  url("https://db.onlinewebfonts.com/t/2aa5f6db10ab7b69465c95555c235503.ttf")format("truetype"),
+  url("https://db.onlinewebfonts.com/t/2aa5f6db10ab7b69465c95555c235503.svg#Graphik-Semibold")format("svg");
 }
 
 *, *::before, *::after {
@@ -43,7 +50,7 @@ footer, header, hgroup, menu, nav, section {
 }
 
 body {
-  font-family: "Graphik-Regular";
+  font-family: "Graphik-Regular", serif;
   line-height: 1;
 }
 
@@ -70,6 +77,14 @@ input, button, textarea, select {
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  align-items: center;
 }
 
 /* You can add more reset styles as you see fit */

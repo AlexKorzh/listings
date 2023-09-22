@@ -5,11 +5,10 @@ import './header.scss';
 export const Header = () => {
   return (
     <div className='header'>
-      <LogoIcon/>
-      <Search/>
-      <div className='menu-buttons' style={{ width: 300, height: 40 }}>
-
+      <div className='header__logo'>
+        <LogoIcon/>
       </div>
+      <Search/>
     </div>
   );
 }

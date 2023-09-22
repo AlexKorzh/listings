@@ -1,21 +1,23 @@
+import {  Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import './app.css';
-import { Header, Map, PropertyList } from './components';
-import { useGetAllListingsQuery } from './api';
+import { HomesPage } from './pages';
+
+const NotFound = () => {
+  return (
+    <div>Not Found</div>
+  );
+}
 
 export const App = () => {
-  const { data: properties, isLoading } = useGetAllListingsQuery({});
-
-  if (isLoading) {
-    return <div>Loading ... Show Skeleton</div>;
-  }
-
   return (
-    <div className='app'>
-      <Header/>
-      <div style={{ display: 'flex', height: 'calc(100vh - 78px)' }}>
-        <Map/>
-        <PropertyList properties={properties}/>
+    <Router>
+      <div className='app'>
+          <Routes>
+            <Route path="/homes" element={<HomesPage />} />
+            <Route path="/" element={<HomesPage />} />
+            <Route path="*" element={<NotFound/>} />
+          </Routes>
       </div>
-    </div>
+    </Router>
   );
 }

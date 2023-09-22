@@ -1,0 +1,1 @@
+export * from './homes.page.tsx';

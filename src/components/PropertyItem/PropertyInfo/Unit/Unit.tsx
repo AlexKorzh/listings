@@ -6,10 +6,13 @@ interface PropertyInfoProps {
 
 export const Unit = ({ unit }: PropertyInfoProps) => {
   return (
-    <div className='units'>
+    <>
       <span className='units__item'>{unit.bedroom}bd</span>
       <span className='units__item'>{unit.bathroom}ba</span>
-      <span className='units__item'>{unit.squareFootage}ft2</span>
-    </div>
+      <span className='units__item'>
+        {unit.squareFootage.toLocaleString('en-US')}&nbsp;ft
+        <span className='units__item-square'>2</span>
+      </span>
+    </>
   );
 }

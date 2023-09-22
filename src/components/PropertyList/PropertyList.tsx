@@ -1,28 +1,36 @@
+import { FixedSizeList as List } from 'react-window';
 import { IProperty } from '../../types';
 import { PropertyItem } from '../PropertyItem';
 import './property-list.scss';
 
 interface PropertyListProps {
-  properties: IProperty[]
+  properties: IProperty[];
 }
 
 export const PropertyList = ({ properties }: PropertyListProps) => {
-  const property = properties[0];
-  const property1 = properties[1];
+  const Row = ({ index, style }: any) => {
+    const property = properties[index];
 
-  console.log('data property -->', property);
-  console.log('data property1 -->', property1);
+    return (
+      <div style={{ ...style, width: 'calc(100% - 16px)' }}>
+        <PropertyItem key={property._id} property={property} />
+      </div>
+    );
+  };
+
+  const itemHeight = 200;
+  const listHeight = window.innerHeight - 78 - 180;
 
   return (
-    <div className='property-list'>
-      {
-        properties.map((property: IProperty) => {
-          return (
-            <PropertyItem key={property._id} property={property}/>
-          );
-        })
-      }
+    <div className="list-wrapper">
+      <List
+        height={listHeight}
+        itemCount={properties.length}
+        itemSize={itemHeight}
+        width='100%'
+      >
+        {Row}
+      </List>
     </div>
   );
 }
-

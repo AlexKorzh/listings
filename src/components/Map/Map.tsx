@@ -1,5 +1,5 @@
 import './map.scss';
-import mapImage from '../../assets/map.png';
+import mapImage from './map.png';
 
 export const Map = () => {
   return (

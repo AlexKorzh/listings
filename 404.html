@@ -4,9 +4,10 @@
     <meta charset="utf-8">
     <title>Redirecting...</title>
     <script>
-      // This takes the current URL and changes its path to /#/originalPath
+      const basePath = '/listings';
       const location = window.location;
-      const newPath = '/#' + location.pathname + location.search;
+      const path = location.pathname.replace(basePath, '');
+      const newPath = basePath + '/#' + path + location.search;
       window.location.replace(newPath);
     </script>
 </head>

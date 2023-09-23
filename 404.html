@@ -4,13 +4,11 @@
     <meta charset="utf-8">
     <title>Redirecting...</title>
     <script>
-      // Check if the current path includes '/listings/'
-      if (window.location.pathname.includes('/listings/')) {
-        // If it does, just reload the page. This will trigger the hash routing.
-        window.location.reload();
-      } else {
-        // If not, redirect to the correct base path.
-        window.location.href = '/listings/' + window.location.hash;
+      const pathname = window.location.pathname;
+      const hash = window.location.hash;
+
+      if (!pathname.startsWith('/listings/')) {
+        window.location.href = '/listings/' + hash;
       }
     </script>
 </head>

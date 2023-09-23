@@ -28,23 +28,50 @@
 }
 
 @media screen and (max-width: 1240px) {
-  .property-item {
-    height: 360px;
-    align-items: flex-start;
-    flex-direction: column;
+  .homes-content {
+    .property-item {
+      height: 360px;
+      align-items: flex-start;
+      flex-direction: column;
 
-    &__image-cotainer {
-      width: 100%;
+      &__image-cotainer {
+        width: 100%;
+
+        img {
+          height: 100%;
+          object-fit: cover;
+        }
+      }
     }
   }
 }
 
 @media screen and (max-width: 870px) {
-  .homes-content {
-    flex-direction: column;
+  .homes {
+    .header {
+      justify-content: flex-end;
+    }
   }
 
-  .map, .right-panel {
-    width: auto;
+  .homes-content {
+    flex-direction: column;
+
+    .map, .right-panel {
+      width: auto;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .homes {
+    .header {
+      padding: 10px;
+      flex-direction: column;
+      justify-content: center;
+
+      &__logo {
+        position: static;
+      }
+    }
   }
 }

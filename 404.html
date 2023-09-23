@@ -4,10 +4,11 @@
     <meta charset="utf-8">
     <title>Redirecting...</title>
     <script>
-      const basePath = '/listings';
+      const desiredBasePath = '/listings/';
       const currentLocation = window.location;
-      if (!currentLocation.pathname.includes(basePath)) {
-        const newPath = basePath + currentLocation.pathname + currentLocation.search + currentLocation.hash;
+
+      if (!currentLocation.pathname.startsWith(desiredBasePath)) {
+        const newPath = desiredBasePath + currentLocation.hash.substr(2) + currentLocation.search;
         window.location.replace(newPath);
       }
     </script>

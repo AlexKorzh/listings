@@ -2,13 +2,17 @@ import { LogoIcon } from './LogoIcon';
 import { Search } from './Search';
 import './header.scss';
 
-export const Header = () => {
+interface HeaderProps {
+  isSearchHidden?: boolean;
+}
+
+export const Header = ({ isSearchHidden = false }: HeaderProps) => {
   return (
     <div className='header'>
       <div className='header__logo'>
         <LogoIcon/>
       </div>
-      <Search/>
+      { !isSearchHidden && <Search/> }
     </div>
   );
 }

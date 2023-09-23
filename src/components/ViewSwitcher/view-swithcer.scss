@@ -1,0 +1,26 @@
+.view-switcher {
+  cursor: pointer;
+  padding: 0 16px;
+  position: fixed;
+  z-index: 2;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 80px;
+  height: 40px;
+  background-color: #222;
+
+  &__icon {
+    display: inline-flex;
+    margin-right: 8px;
+  }
+
+  &__text {
+    font-family: Graphik-Semibold, serif;
+    font-weight: 600;
+    color: white;
+  }
+}

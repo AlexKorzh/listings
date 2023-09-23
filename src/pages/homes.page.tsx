@@ -1,10 +1,20 @@
-import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { skipToken } from '@reduxjs/toolkit/query';
-import { Header, Map, Filters, PropertyList } from '../components';
-import { useGetAllListingsQuery, useGetListingsByAddressQuery } from '../api';
+import {useEffect, useState} from 'react';
 import './home.scss';
-import {IProperty} from "../types";
+
+import {useLocation} from 'react-router-dom';
+import {skipToken} from '@reduxjs/toolkit/query';
+import {
+  Header,
+  Map,
+  Filters,
+  PropertyList,
+  ViewSwitcher,
+  FiltersSkeleton,
+  PropertyItemSkeleton
+} from '../components';
+
+import {useGetAllListingsQuery, useGetListingsByAddressQuery} from '../api';
+import {IProperty, View} from "../types";
 
 export const HomesPage = () => {
   const location = useLocation();
@@ -14,9 +24,33 @@ export const HomesPage = () => {
 
   const allListings = useGetAllListingsQuery(searchTerm ? skipToken : {});
   const listingsByAddress = useGetListingsByAddressQuery(searchTerm ? { address: searchTerm } : skipToken);
-  const { data: properties, isLoading } = searchTerm ? listingsByAddress : allListings;
 
+  const { data: properties, isLoading } = searchTerm ? listingsByAddress : allListings;
   const [filteredProperties, setFilteredProperties] = useState(properties || []);
+  const [isMobileViewPort, setIsMobileViewPort] = useState(false);
+  const [view, setView] = useState(View.map);
+
+  const onViewChange = (view: View) => {
+    setView(view);
+  }
+
+  useEffect(() => {
+    const updateItemHeight = () => {
+      if (window.innerWidth < 870) {
+        setIsMobileViewPort(true);
+      } else {
+        setIsMobileViewPort(false);
+      }
+    };
+
+    updateItemHeight();
+
+    window.addEventListener('resize', updateItemHeight);
+
+    return () => {
+      window.removeEventListener('resize', updateItemHeight);
+    };
+  }, []);
 
   useEffect(() => {
     if (properties && properties.length && !isLoading) {
@@ -43,8 +77,39 @@ export const HomesPage = () => {
     }
   }, [filterTerm, isLoading, properties]);
 
-  if (!properties || isLoading) {
-    return <div>Loading ... Show Skeleton</div>;
+  if (!properties && isLoading) {
+    return <div className='homes'>
+      <Header isSearchHidden={true}/>
+      <div className='homes-content'>
+        <Map />
+        <div className='right-panel'>
+          <FiltersSkeleton/>
+          <div className='list-wrapper'>
+            <PropertyItemSkeleton/>
+            <PropertyItemSkeleton/>
+            <PropertyItemSkeleton/>
+            <PropertyItemSkeleton/>
+            <PropertyItemSkeleton/>
+            <PropertyItemSkeleton/>
+          </div>
+        </div>
+      </div>
+    </div>;
+  }
+
+  if (isMobileViewPort) {
+    return (
+      <div className='homes'>
+        <Header isSearchHidden={isMobileViewPort && view === View.map}/>
+        <div className='homes-content'>
+          {view === View.map ? <Map /> : <div className='right-panel'>
+            <Filters propertyCount={filteredProperties.length}/>
+            <PropertyList properties={filteredProperties} />
+          </div>}
+        </div>
+        <ViewSwitcher onChange={onViewChange} view={view}/>
+      </div>
+    );
   }
 
   return (

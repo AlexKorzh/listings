@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { FixedSizeList as List } from 'react-window';
 import { IProperty } from '../../types';
 import { PropertyItem } from '../PropertyItem';
@@ -8,6 +9,26 @@ interface PropertyListProps {
 }
 
 export const PropertyList = ({ properties }: PropertyListProps) => {
+  const [itemHeight, setItemHeight] = useState(200);
+
+  useEffect(() => {
+    const updateItemHeight = () => {
+      if (window.innerWidth < 1240) {
+        setItemHeight(380);
+      } else {
+        setItemHeight(200);
+      }
+    };
+
+    updateItemHeight();
+
+    window.addEventListener('resize', updateItemHeight);
+
+    return () => {
+      window.removeEventListener('resize', updateItemHeight);
+    };
+  }, []);
+
   const Row = ({ index, style }: any) => {
     const property = properties[index];
 
@@ -18,7 +39,6 @@ export const PropertyList = ({ properties }: PropertyListProps) => {
     );
   };
 
-  const itemHeight = 200;
   const listHeight = window.innerHeight - 78 - 180;
 
   return (

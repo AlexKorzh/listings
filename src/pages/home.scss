@@ -26,3 +26,25 @@
     }
   }
 }
+
+@media screen and (max-width: 1240px) {
+  .property-item {
+    height: 360px;
+    align-items: flex-start;
+    flex-direction: column;
+
+    &__image-cotainer {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 870px) {
+  .homes-content {
+    flex-direction: column;
+  }
+
+  .map, .right-panel {
+    width: auto;
+  }
+}

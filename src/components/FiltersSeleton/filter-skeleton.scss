@@ -1,0 +1,35 @@
+.filters-skeleton {
+  .title-skeleton,
+  .listing-count-skeleton,
+  .dropdown-skeleton {
+    background: linear-gradient(90deg, #f0f0f0, #e0e0e0, #f0f0f0);
+    animation: shimmer 1.5s infinite;
+
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+  }
+
+  .title-skeleton {
+    border-radius: 4px;
+    height: 24px;
+    width: 40%;
+    margin-bottom: 10px;
+  }
+
+  .listing-count-skeleton {
+    border-radius: 4px;
+    height: 20px;
+    width: 60%;
+    margin-bottom: 10px;
+  }
+
+  .dropdown-skeleton {
+    margin-top: 2rem;
+    margin-bottom: 22px;
+    border-radius: 20px;
+    height: 27px;
+    width: 80px;
+  }
+}

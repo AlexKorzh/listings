@@ -1,0 +1,54 @@
+.property-item-skeleton {
+  margin-bottom: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 180px;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: rgba(29, 71, 123, 0.04) 0px 5px 10px, rgba(29, 71, 123, 0.12) 0px 1px 5px;
+  box-sizing: border-box;
+
+  &__image-cotainer,
+  &__info-price,
+  .units__item {
+    background: linear-gradient(90deg, #f0f0f0, #e0e0e0, #f0f0f0);
+    animation: shimmer 1.5s infinite;
+
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+  }
+
+  &__image-cotainer {
+    width: 277px;
+    height: 100%;
+  }
+
+  &__info {
+    flex: 1;
+    padding: 20px 22px 15px 32px;
+    display: flex;
+    flex-direction: column;
+
+    &-price {
+      height: 28px;
+      width: 60%; // you can adjust this as per your preference
+      margin-bottom: 10px;
+    }
+  }
+
+  .units {
+    display: flex;
+    flex-direction: column;
+
+    &__item {
+      height: 20px;
+      width: 80%; // you can adjust this as per your preference
+      margin-bottom: 4px;
+    }
+  }
+}

@@ -4,20 +4,14 @@
     <meta charset="utf-8">
     <title>Redirecting...</title>
     <script>
-      (function() {
-        const desiredBasePath = '/listings/';
-        const currentLocation = window.location;
-
-        console.log('Pathname:', currentLocation.pathname);
-        console.log('Hash:', currentLocation.hash);
-        console.log('Search:', currentLocation.search);
-
-        // Check if desiredBasePath is NOT present in the pathname
-        if (!currentLocation.pathname.startsWith(desiredBasePath)) {
-          const newPath = desiredBasePath + currentLocation.hash.substr(2) + (currentLocation.search || '');
-          window.location.replace(newPath);
-        }
-      })();
+      // Check if the current path includes '/listings/'
+      if (window.location.pathname.includes('/listings/')) {
+        // If it does, just reload the page. This will trigger the hash routing.
+        window.location.reload();
+      } else {
+        // If not, redirect to the correct base path.
+        window.location.href = '/listings/' + window.location.hash;
+      }
     </script>
 </head>
 <body>

@@ -51,7 +51,7 @@ export const Search = () => {
       if (currentParams.toString()) {
         navigate(`?${currentParams.toString()}`);
       } else {
-        navigate(`/homes`);
+        navigate(`/`);
       }
     }
   }, [debouncedQuery, navigate, location.search]);

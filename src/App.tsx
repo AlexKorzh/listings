@@ -10,10 +10,9 @@ const NotFound = () => {
 
 export const App = () => {
   return (
-    <Router basename="/listings">
+    <Router basename='/listings'>
       <div className='app'>
           <Routes>
-            <Route path="/homes" element={<HomesPage />} />
             <Route path="/" element={<HomesPage />} />
             <Route path="*" element={<NotFound/>} />
           </Routes>

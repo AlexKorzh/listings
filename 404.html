@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;URL='/listings/#' + location.pathname.slice(1)">
-    <script type="text/javascript">
-      setTimeout(function(){
-        location.href = '/listings/#' + location.pathname.slice(1);
-      }, 0);
-    </script>
+    <meta charset="utf-8">
     <title>Redirecting...</title>
+    <script>
+      // This takes the current URL and changes its path to /#/originalPath
+      const location = window.location;
+      const newPath = '/#' + location.pathname + location.search;
+      window.location.replace(newPath);
+    </script>
 </head>
 <body>
 </body>

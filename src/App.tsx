@@ -10,7 +10,7 @@ const NotFound = () => {
 
 export const App = () => {
   return (
-    <Router>
+    <Router basename="/listings">
       <div className='app'>
           <Routes>
             <Route path="/homes" element={<HomesPage />} />

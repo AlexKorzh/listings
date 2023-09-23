@@ -6,12 +6,10 @@
     <script>
       const basePath = '/listings';
       const currentLocation = window.location;
-
-      const newPath = currentLocation.pathname.includes(basePath)
-        ? currentLocation.href
-        : basePath + '/#' + currentLocation.pathname + currentLocation.search;
-
-      window.location.replace(newPath);
+      if (!currentLocation.pathname.includes(basePath)) {
+        const newPath = basePath + currentLocation.pathname + currentLocation.search + currentLocation.hash;
+        window.location.replace(newPath);
+      }
     </script>
 </head>
 <body>

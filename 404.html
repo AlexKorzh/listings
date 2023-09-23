@@ -4,13 +4,20 @@
     <meta charset="utf-8">
     <title>Redirecting...</title>
     <script>
-      const desiredBasePath = '/listings/';
-      const currentLocation = window.location;
+      (function() {
+        const desiredBasePath = '/listings/';
+        const currentLocation = window.location;
 
-      if (!currentLocation.pathname.startsWith(desiredBasePath)) {
-        const newPath = desiredBasePath + currentLocation.hash.substr(2) + currentLocation.search;
-        window.location.replace(newPath);
-      }
+        console.log('Pathname:', currentLocation.pathname);
+        console.log('Hash:', currentLocation.hash);
+        console.log('Search:', currentLocation.search);
+
+        // Check if desiredBasePath is NOT present in the pathname
+        if (!currentLocation.pathname.startsWith(desiredBasePath)) {
+          const newPath = desiredBasePath + currentLocation.hash.substr(2) + (currentLocation.search || '');
+          window.location.replace(newPath);
+        }
+      })();
     </script>
 </head>
 <body>

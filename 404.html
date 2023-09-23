@@ -5,9 +5,9 @@
     <title>Redirecting...</title>
     <script>
       const basePath = '/listings';
-      const location = window.location;
-      const path = location.pathname.replace(basePath, '');
-      const newPath = basePath + '/#' + path + location.search;
+      const currentLocation = window.location;
+      const path = currentLocation.pathname.replace(basePath, '');
+      const newPath = basePath + '/#' + path + currentLocation.search;
       window.location.replace(newPath);
     </script>
 </head>
